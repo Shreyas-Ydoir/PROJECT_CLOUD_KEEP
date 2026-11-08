@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#100b20">
+    <title>Planner — Cloudkeep</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=cloud-purple-3">
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar dashboard-topbar app-page-topbar">
+        <a class="brand" href="index.html" aria-label="Cloudkeep home"><span class="brand-mark"><svg viewBox="0 0 32 32" fill="none"><path d="M9.5 23.5h13.1a5.4 5.4 0 0 0 .6-10.8A7.4 7.4 0 0 0 9 11.1a6.3 6.3 0 0 0 .5 12.4Z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="m12.7 17.8 3.1 3.1 4.8-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Cloud<span class="brand-accent">keep</span></span></a>
+        <nav class="app-page-nav" aria-label="Main navigation"><a href="dashboard.html">Home</a><a href="backup.html">Backup</a><a href="activity.html">Activity</a><a href="planner.html" aria-current="page">Planner</a><a href="cleanup.html">Deletion</a></nav>
+        <a class="profile-avatar" href="profile.html" data-profile-avatar aria-label="Profile"><img alt="" data-profile-picture hidden><span data-profile-initials>?</span></a>
+        <details class="dashboard-menu"><summary aria-label="Open menu"><span>Menu</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" /></svg></summary><div class="dashboard-menu-panel"><nav aria-label="Main menu"><a href="dashboard.html">Home</a><a href="backup.html">Backup</a><a href="activity.html">Activity</a><a href="planner.html" aria-current="page">Planner</a><a href="cleanup.html">Scheduled deletion</a><a href="profile.html">Profile</a></nav><button class="menu-logout" type="button" data-logout>Log out</button></div></details>
+      </header>
+      <main class="dashboard-view">
+        <div class="dashboard-top"><div><h1>Planner</h1></div></div>
+        <div class="preview-banner" id="page-message" role="status" hidden></div>
+        <div class="dashboard-tools planner-grid">
+          <section class="timeline-card" aria-labelledby="timeline-title">
+            <div class="activity-head"><div><span class="eyebrow">BACKUP HISTORY</span><h2 id="timeline-title">Project timeline</h2></div><div class="timeline-head-actions"><button type="button" class="timeline-refresh" id="timeline-refresh">Refresh</button><label class="list-sort-control">Sort by<select id="timeline-sort" aria-label="Sort project timeline"><option value="date-desc">Newest first</option><option value="date-asc">Oldest first</option><option value="name-asc">Name, A–Z</option><option value="name-desc">Name, Z–A</option><option value="size-asc">Size, smallest</option><option value="size-desc">Size, largest</option></select></label><span class="timeline-count" id="timeline-count">0 events</span></div></div>
+            <div class="timeline-folder-toolbar">
+              <form id="timeline-folder-form" class="timeline-folder-form">
+                <label class="visually-hidden" for="timeline-folder-name">New folder name</label>
+                <input id="timeline-folder-name" type="text" maxlength="60" placeholder="Name a folder" required>
+                <label class="visually-hidden" for="timeline-folder-prefix">Filename prefix</label>
+                <input id="timeline-folder-prefix" type="text" maxlength="30" pattern="[A-Za-z0-9.-]*" placeholder="Prefix (optional)" title="Use letters, numbers, dots, or hyphens">
+                <button type="submit">Create folder</button>
+              </form>
+              <label class="timeline-folder-view">Show
+                <select id="timeline-folder-filter" aria-label="Choose timeline folder">
+                  <option value="all">All files</option>
+                  <option value="unassigned">Unassigned</option>
+                </select>
+              </label>
+              <button type="button" class="timeline-folder-delete" id="timeline-folder-delete" hidden>Delete folder</button>
+            </div>
+            <div class="timeline-controls">
+              <label class="search-box"><span aria-hidden="true">⌕</span><input id="timeline-search" type="search" placeholder="Find a backup" aria-label="Search timeline backups"></label>
+              <select id="timeline-status" aria-label="Filter timeline status"><option value="all">All backups</option><option value="complete">Completed</option><option value="failed">Failed</option><option value="deleted">Deleted</option></select>
+              <button type="button" class="clear-button" id="timeline-date-clear" hidden>Clear date</button>
+            </div>
+            <p class="timeline-message" id="timeline-message" role="status" aria-live="polite" hidden></p>
+            <div class="timeline-list" id="timeline-list" aria-live="polite"></div>
+            <div class="timeline-empty" id="timeline-empty"><span class="empty-icon">◷</span><h3>No backups yet</h3><p>Files you back up will appear here with their upload status.</p><a class="text-link" href="backup.html">Back up files <span aria-hidden="true">↗</span></a></div>
+          </section>
+          <section class="calendar-card" aria-labelledby="calendar-title">
+            <div class="activity-head calendar-heading"><div><span class="eyebrow">PLAN AHEAD</span><h2 id="calendar-title">Work calendar</h2></div><div class="calendar-nav"><button class="calendar-nav-button" id="calendar-prev" type="button" aria-label="Previous month">‹</button><button class="calendar-nav-button" id="calendar-next" type="button" aria-label="Next month">›</button></div></div>
+            <div class="calendar-month"><strong id="calendar-month-label"></strong><button class="calendar-today" id="calendar-today" type="button">Today</button></div>
+            <div class="calendar-grid calendar-weekdays" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+            <div class="calendar-grid calendar-days" id="calendar-days" role="group" aria-label="Calendar dates"></div>
+            <div class="reminder-panel">
+              <h3 id="selected-date-label"></h3>
+              <form class="reminder-form" id="reminder-form"><label class="visually-hidden" for="reminder-title">Note for selected date</label><textarea id="reminder-title" name="title" rows="2" maxlength="200" placeholder="Write a note for this date…" required></textarea><button class="button button-dark" type="submit" aria-label="Save note">+</button></form>
+              <p class="reminder-message" id="reminder-message" role="status" aria-live="polite"></p>
+              <label class="list-sort-control reminder-sort-control">Sort notes<select id="reminder-sort" aria-label="Sort notes"><option value="added">Added order</option><option value="name-asc">Name, A–Z</option><option value="name-desc">Name, Z–A</option><option value="incomplete">Incomplete first</option><option value="complete">Completed first</option></select></label>
+              <ul class="reminder-list" id="reminder-list"></ul>
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer class="footer dashboard-footer"><a class="brand" href="index.html"><span class="brand-mark"><svg viewBox="0 0 32 32" fill="none"><path d="M9.5 23.5h13.1a5.4 5.4 0 0 0 .6-10.8A7.4 7.4 0 0 0 9 11.1a6.3 6.3 0 0 0 .5 12.4Z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="m12.7 17.8 3.1 3.1 4.8-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>cloudkeep</span></a></footer>
+    </div>
+    <script src="cloudkeep-common.js" defer></script>
+    <script src="planner.js" defer></script>
+  </body>
+</html>

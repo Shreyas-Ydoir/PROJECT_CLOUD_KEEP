@@ -1,0 +1,67 @@
+.\.venv\Scripts\python.exe .\app.pyAttached Element Context from Integrated Browser
+
+Element: a.button.google-button
+
+URL: file:///D:/code/project/login.html
+
+HTML Path: div.site-shell > main.auth-view > section.auth-card > a.button.google-button
+
+Outer HTML:
+```html
+<a class="button google-button" href="/auth/google"><span class="google-g">G</span> Continue with Google</a>
+```
+
+Dimensions:
+- top: 267px
+- left: 65px
+- width: 363px
+- height: 43px
+
+CSS:
+```css
+* { box-sizing: border-box; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a { color: inherit; text-decoration: none; }
+.button { border: 0; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 12px; font-weight: 600; transition: transform .2s, background .2s, box-shadow .2s; }
+.google-button { width: 100%; background: #fff; border: 1px solid #e5e8e1; min-height: 43px; font-size: 11px; color: #354034; }
+.button:hover { transform: translateY(-1px); }
+.google-button:hover { background: #f9faf7; }
+
+/* Inherited */
+body { color: var(--ink); font-family: var(--sans) }
+
+/* Resolved values */
+border-radius: 8px;
+border: 0.666667px solid rgb(229, 232, 225);
+text-decoration: rgb(53, 64, 52);
+transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+align-items: center;
+background-attachment: scroll;
+background-clip: border-box;
+background-color: rgb(249, 250, 247);
+background-image: none;
+background-origin: padding-box;
+background-position-x: 0%;
+background-position-y: 0%;
+background-repeat: repeat;
+background-size: auto;
+box-sizing: border-box;
+color: rgb(53, 64, 52);
+column-gap: 12px;
+cursor: pointer;
+display: inline-flex;
+font-family: "DM Sans", sans-serif;
+font-size: 11px;
+font-weight: 600;
+height: 43px;
+justify-content: center;
+min-height: 43px;
+row-gap: 12px;
+transform: matrix(1, 0, 0, 1, 0, -1);
+width: 362.667px;
+
+/* CSS variables */
+--sans: "DM Sans", sans-serif;
+--ink: #20291f;
+```

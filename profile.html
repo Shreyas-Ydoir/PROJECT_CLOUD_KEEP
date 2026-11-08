@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#100b20">
+    <title>Profile — Cloudkeep</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=cloud-purple-3">
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar dashboard-topbar app-page-topbar">
+        <a class="brand" href="index.html" aria-label="Cloudkeep home"><span class="brand-mark"><svg viewBox="0 0 32 32" fill="none"><path d="M9.5 23.5h13.1a5.4 5.4 0 0 0 .6-10.8A7.4 7.4 0 0 0 9 11.1a6.3 6.3 0 0 0 .5 12.4Z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="m12.7 17.8 3.1 3.1 4.8-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Cloud<span class="brand-accent">keep</span></span></a>
+        <nav class="app-page-nav" aria-label="Main navigation"><a href="dashboard.html">Home</a><a href="backup.html">Backup</a><a href="activity.html">Activity</a><a href="planner.html">Planner</a><a href="cleanup.html">Deletion</a></nav>
+        <a class="profile-avatar" href="profile.html" data-profile-avatar aria-label="Profile" aria-current="page"><img alt="" data-profile-picture hidden><span data-profile-initials>?</span></a>
+        <details class="dashboard-menu">
+          <summary aria-label="Open menu"><span>Menu</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" /></svg></summary>
+          <div class="dashboard-menu-panel">
+            <nav aria-label="Main menu"><a href="dashboard.html">Home</a><a href="backup.html">Backup</a><a href="activity.html">Activity</a><a href="planner.html">Planner</a><a href="cleanup.html">Scheduled deletion</a><a href="profile.html" aria-current="page">Profile</a></nav>
+            <button class="menu-logout" type="button" data-logout>Log out</button>
+          </div>
+        </details>
+      </header>
+      <main class="dashboard-view">
+        <div class="dashboard-top"><div><span class="eyebrow">YOUR ACCOUNT</span><h1>Profile</h1></div></div>
+        <div class="preview-banner" id="page-message" role="status" hidden></div>
+        <section class="profile-card" aria-labelledby="profile-name">
+          <div class="profile-identity">
+            <div class="profile-large-avatar" data-profile-avatar>
+              <img alt="" data-profile-picture hidden>
+              <span data-profile-initials>?</span>
+            </div>
+            <div>
+              <span class="eyebrow">CLOUDKEEP PROFILE</span>
+              <h2 id="profile-name">Your account</h2>
+              <p id="profile-email"></p>
+            </div>
+          </div>
+          <dl class="profile-details">
+            <div><dt>Sign-in email</dt><dd id="profile-signin-email"></dd></div>
+            <div><dt>Sign-in method</dt><dd id="profile-auth-method"></dd></div>
+            <div><dt>Google Drive</dt><dd id="profile-drive-email"></dd></div>
+          </dl>
+          <p class="profile-note">Your sign-in email identifies your Cloudkeep account. Google Drive is shown separately if you connected a different Google account for backups.</p>
+          <a class="button button-dark button-small profile-back-link" href="dashboard.html">Back to home <span aria-hidden="true">↗</span></a>
+        </section>
+      </main>
+      <footer class="footer dashboard-footer"><a class="brand" href="index.html"><span class="brand-mark"><svg viewBox="0 0 32 32" fill="none"><path d="M9.5 23.5h13.1a5.4 5.4 0 0 0 .6-10.8A7.4 7.4 0 0 0 9 11.1a6.3 6.3 0 0 0 .5 12.4Z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="m12.7 17.8 3.1 3.1 4.8-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>cloudkeep</span></a></footer>
+    </div>
+    <script src="cloudkeep-common.js" defer></script>
+    <script src="profile.js" defer></script>
+  </body>
+</html>

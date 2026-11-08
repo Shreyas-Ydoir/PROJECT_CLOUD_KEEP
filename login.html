@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#100b20">
+    <title>Log in — Cloudkeep</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=cloud-purple-3">
+  </head>
+  <body>
+    <div class="site-shell">
+      <main class="auth-view">
+        <div class="auth-backdrop" aria-hidden="true"><span class="auth-orbit"></span><span class="auth-spark">✳</span></div>
+        <section class="auth-card" aria-labelledby="login-title">
+          <a href="index.html" class="brand auth-brand" aria-label="Cloudkeep home"><span class="brand-mark"><svg viewBox="0 0 32 32" fill="none"><path d="M9.5 23.5h13.1a5.4 5.4 0 0 0 .6-10.8A7.4 7.4 0 0 0 9 11.1a6.3 6.3 0 0 0 .5 12.4Z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="m12.7 17.8 3.1 3.1 4.8-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>cloudkeep</span></a>
+          <div class="auth-heading"><span class="eyebrow">WELCOME TO A CALMER BACKUP</span><h1 id="login-title">Good to have<br>you here.</h1><p id="login-description">Log in to check in on your files.</p></div>
+          <a class="button google-button" href="/auth/google"><span class="google-g">G</span> Continue with Google</a>
+          <div class="divider"><span>or use your email</span></div>
+          <form id="login-form">
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" maxlength="254" required>
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" placeholder="At least 12 characters" autocomplete="current-password" minlength="12" maxlength="1024" required>
+            <div id="confirm-password-field" hidden>
+              <label for="confirm-password">Confirm password</label>
+              <input id="confirm-password" name="confirm-password" type="password" placeholder="Enter your password again" autocomplete="new-password" minlength="12" maxlength="1024">
+            </div>
+            <div class="form-meta"><span></span><a href="#password-reset" id="forgot-link">Forgot password?</a></div>
+            <p class="form-message" id="login-message" role="status" aria-live="polite"></p>
+            <button class="button button-dark button-large auth-submit" id="submit-login" type="submit">Log in <span aria-hidden="true">↗</span></button>
+          </form>
+          <p class="auth-switch" id="auth-switch">New to Cloudkeep? <button type="button" id="toggle-auth-mode">Create an account</button></p>
+          <p class="prototype-note" id="password-reset">Email/password accounts are stored locally with hashed passwords. Password reset requires an email service, which is not configured.</p>
+        </section>
+        <p class="auth-foot">A quieter corner of the internet for your files.</p>
+      </main>
+      <footer class="footer"><a class="brand" href="index.html"><span class="brand-mark"><svg viewBox="0 0 32 32" fill="none"><path d="M9.5 23.5h13.1a5.4 5.4 0 0 0 .6-10.8A7.4 7.4 0 0 0 9 11.1a6.3 6.3 0 0 0 .5 12.4Z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="m12.7 17.8 3.1 3.1 4.8-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>cloudkeep</span></a><span>Make space for peace of mind.</span><span>© 2026 Cloudkeep</span></footer>
+    </div>
+    <script src="cloudkeep-common.js" defer></script>
+    <script src="auth.js" defer></script>
+  </body>
+</html>

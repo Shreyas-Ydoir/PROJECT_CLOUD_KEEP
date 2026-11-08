@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b0a18">
+    <title>Home — Cloudkeep</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=cloud-purple-3">
+  </head>
+  <body>
+    <div class="site-shell app-shell">
+      <aside class="app-sidebar">
+        <a class="app-brand" href="dashboard.html" aria-label="Cloudkeep home">
+          <span class="app-brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M13 34h22a9 9 0 0 0 1-18A12 12 0 0 0 13 15a9.5 9.5 0 0 0 0 19Z" fill="currentColor"/><path d="m19 24 5 5 10-11" stroke="#120d22" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span>Cloud<span>keep</span></span>
+        </a>
+        <nav class="app-side-nav" aria-label="Main navigation">
+          <a class="app-side-link is-current" href="dashboard.html" aria-current="page"><span class="app-side-icon" aria-hidden="true">⌂</span><span>Home</span></a>
+          <a class="app-side-link" href="backup.html"><span class="app-side-icon" aria-hidden="true">↑</span><span>Backup</span></a>
+          <a class="app-side-link" href="activity.html"><span class="app-side-icon" aria-hidden="true">▤</span><span>Files &amp; activity</span></a>
+          <a class="app-side-link" href="planner.html"><span class="app-side-icon" aria-hidden="true">◷</span><span>Planner</span></a>
+          <a class="app-side-link" href="cleanup.html"><span class="app-side-icon" aria-hidden="true">⚙</span><span>Scheduled deletion</span></a>
+        </nav>
+        <div class="sidebar-art" aria-hidden="true">
+          <p>Your files.<br><strong>Safe in the cloud.</strong></p>
+          <div class="sidebar-art-cloud">☁</div>
+          <span class="sidebar-art-orbit"></span>
+          <span class="sidebar-art-device"></span>
+          <span class="sidebar-art-plant">✳</span>
+        </div>
+        <div class="sidebar-online"><i></i><span>Cloudkeep is ready</span></div>
+      </aside>
+
+      <div class="app-workspace">
+        <header class="app-topbar">
+          <label class="app-search">
+            <span aria-hidden="true">⌕</span>
+            <input id="dashboard-search" type="search" placeholder="Search files…" aria-label="Search uploaded files">
+            <kbd>/</kbd>
+          </label>
+          <div class="app-top-actions">
+            <a class="profile-avatar" href="profile.html" data-profile-avatar aria-label="Profile">
+              <img alt="" data-profile-picture hidden>
+              <span data-profile-initials>?</span>
+            </a>
+            <details class="dashboard-menu">
+              <summary aria-label="Open menu"><span>Menu</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" /></svg></summary>
+              <div class="dashboard-menu-panel">
+                <nav aria-label="Account menu"><a href="profile.html">Profile</a><a href="activity.html">Upload activity</a><a href="planner.html">Planner</a></nav>
+                <button class="menu-logout" type="button" data-logout>Log out</button>
+              </div>
+            </details>
+          </div>
+        </header>
+
+        <main class="dashboard-view app-dashboard">
+          <div class="preview-banner" id="dashboard-message" role="status" hidden></div>
+          <div class="workspace-grid">
+            <div class="workspace-main">
+              <section class="welcome-panel">
+                <div class="welcome-copy">
+                  <span class="eyebrow" id="home-date">YOUR CLOUD WORKSPACE</span>
+                  <h1><span id="greeting">Welcome back,</span><br><strong>Your files are safe.</strong></h1>
+                  <p>Keep your important files backed up, organized, and easy to find.</p>
+                  <a class="button button-dark button-small" href="backup.html">Back up files <span aria-hidden="true">↗</span></a>
+                </div>
+                <div class="welcome-art" aria-hidden="true">
+                  <span class="welcome-art-orbit"></span>
+                  <span class="welcome-art-cloud">☁</span>
+                  <span class="welcome-art-arrow">↑</span>
+                  <span class="welcome-art-file welcome-art-file-one">▤</span>
+                  <span class="welcome-art-file welcome-art-file-two">▧</span>
+                  <span class="welcome-art-platform"></span>
+                  <span class="welcome-art-spark welcome-art-spark-one">✦</span>
+                  <span class="welcome-art-spark welcome-art-spark-two">✳</span>
+                </div>
+              </section>
+
+              <section class="dashboard-stats" aria-label="Backup overview">
+                <article class="dashboard-stat">
+                  <span class="stat-icon stat-icon-purple" aria-hidden="true">✓</span>
+                  <div><small>Backup status</small><strong id="backup-status">Checking…</strong><span id="backup-status-note">Checking your account</span></div>
+                </article>
+                <article class="dashboard-stat">
+                  <span class="stat-icon stat-icon-orange" aria-hidden="true">▤</span>
+                  <div><small>Files backed up</small><strong id="total-files">0</strong><span id="total-size">0 B stored</span></div>
+                </article>
+                <article class="dashboard-stat">
+                  <span class="stat-icon stat-icon-purple" aria-hidden="true">◷</span>
+                  <div><small>Last backup</small><strong id="last-backup">No uploads yet</strong><span>Upload history</span></div>
+                </article>
+                <article class="dashboard-stat">
+                  <span class="stat-icon stat-icon-orange" aria-hidden="true">☁</span>
+                  <div><small>Drive connection</small><strong id="drive-status-title">Not connected</strong><span id="drive-status-note">Connect to back up files</span></div>
+                </article>
+              </section>
+
+              <section class="files-panel">
+                <div class="files-panel-heading">
+                  <div><span class="eyebrow">YOUR BACKUPS</span><h2><span class="files-heading-icon" aria-hidden="true">▰</span> Backed up files</h2></div>
+                  <a class="files-view-all" href="activity.html">View activity <span aria-hidden="true">→</span></a>
+                </div>
+                <div class="files-table-wrap" id="files-table-wrap" hidden>
+                  <table class="files-table">
+                    <thead><tr><th scope="col">Name</th><th scope="col">Size</th><th scope="col">Last modified</th><th scope="col">Status</th></tr></thead>
+                    <tbody id="dashboard-files" aria-live="polite"></tbody>
+                  </table>
+                </div>
+                <div class="files-empty" id="files-empty">
+                  <span aria-hidden="true">↑</span>
+                  <strong>No backed up files yet</strong>
+                  <p>Choose files from your device to create your first backup.</p>
+                  <a class="button button-dark button-small" href="backup.html">Choose files <span aria-hidden="true">↗</span></a>
+                </div>
+                <p class="files-no-results" id="files-no-results" hidden>No files match your search.</p>
+              </section>
+            </div>
+
+            <aside class="workspace-aside" aria-label="Backup details">
+              <section class="side-info-card storage-card">
+                <div class="side-card-heading"><span class="side-card-icon">▰</span><div><h2>Backup usage</h2><p>Across your uploads</p></div></div>
+                <div class="usage-visual"><div class="usage-ring" id="usage-ring"><strong id="usage-percent">0%</strong></div></div>
+                <div class="usage-legend"><span><i></i>Uploaded</span><strong id="usage-size">0 B</strong></div>
+                <div class="usage-legend usage-legend-muted"><span><i></i>Successful files</span><strong id="usage-complete">0</strong></div>
+                <p class="usage-note">Usage reflects your Cloudkeep upload history, not your Google Drive quota.</p>
+              </section>
+              <section class="side-info-card connection-card">
+                <div class="side-card-heading"><span class="side-card-icon connection-shield">✓</span><div><h2>Cloud connection</h2><p id="connection-state">Checking connection…</p></div></div>
+                <p id="connection-description">Your Google Drive connection status will appear here.</p>
+                <a href="/auth/google?intent=connect" id="connect-drive" class="connection-link">Manage connection <span aria-hidden="true">›</span></a>
+              </section>
+              <a class="side-promo-card" href="planner.html">
+                <span class="eyebrow">A LITTLE MORE PEACE OF MIND</span>
+                <strong>Plan your next backup.</strong>
+                <span>Set a reminder in Planner <b aria-hidden="true">↗</b></span>
+                <i aria-hidden="true">✦</i>
+              </a>
+            </aside>
+          </div>
+        </main>
+        <footer class="app-statusbar"><span><i></i><span id="system-state">Connecting to Cloudkeep…</span></span><span>Last checked <time id="last-checked">—</time></span></footer>
+      </div>
+    </div>
+    <script src="cloudkeep-common.js" defer></script>
+    <script src="dashboard.js" defer></script>
+  </body>
+</html>

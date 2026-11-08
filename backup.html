@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#100b20">
+    <title>Back up files — Cloudkeep</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=cloud-purple-3">
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar dashboard-topbar app-page-topbar">
+        <a class="brand" href="index.html" aria-label="Cloudkeep home"><span class="brand-mark"><svg viewBox="0 0 32 32" fill="none"><path d="M9.5 23.5h13.1a5.4 5.4 0 0 0 .6-10.8A7.4 7.4 0 0 0 9 11.1a6.3 6.3 0 0 0 .5 12.4Z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="m12.7 17.8 3.1 3.1 4.8-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Cloud<span class="brand-accent">keep</span></span></a>
+        <nav class="app-page-nav" aria-label="Main navigation"><a href="dashboard.html">Home</a><a href="backup.html" aria-current="page">Backup</a><a href="activity.html">Activity</a><a href="planner.html">Planner</a><a href="cleanup.html">Deletion</a></nav>
+        <a class="profile-avatar" href="profile.html" data-profile-avatar aria-label="Profile"><img alt="" data-profile-picture hidden><span data-profile-initials>?</span></a>
+        <details class="dashboard-menu"><summary aria-label="Open menu"><span>Menu</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" /></svg></summary><div class="dashboard-menu-panel"><nav aria-label="Main menu"><a href="dashboard.html">Home</a><a href="backup.html" aria-current="page">Backup</a><a href="activity.html">Activity</a><a href="planner.html">Planner</a><a href="cleanup.html">Scheduled deletion</a><a href="profile.html">Profile</a></nav><button class="menu-logout" type="button" data-logout>Log out</button></div></details>
+      </header>
+      <main class="dashboard-view">
+        <div class="dashboard-top"><div><h1>Back up your files</h1></div></div>
+        <div class="preview-banner" id="page-message" role="status" hidden></div>
+        <div class="backup-layout">
+        <section class="backup-card">
+          <div class="backup-card-art" aria-hidden="true"><div class="summary-cloud">☁</div><span class="summary-star">✦</span></div>
+          <div class="backup-card-copy"><span class="eyebrow">YOUR PRIVATE DRIVE FOLDER</span><h2 id="drive-title">Connect Google Drive</h2><p id="drive-copy">Authorize your Google account to back up files to your Cloudkeep Backups folder.</p></div>
+          <a class="button google-button connect-drive-button" id="connect-drive" href="/auth/google?intent=connect"><span class="google-g">G</span> Connect Google Drive</a>
+          <label class="drop-zone backup-drop-zone" id="drop-zone" for="file-picker" hidden>
+            <span class="drop-zone-icon" aria-hidden="true">⇧</span>
+            <span><strong>Drop files here to back them up</strong><small>or <u>browse your device</u> · up to 20 files, 100 MB total</small></span>
+          </label>
+          <input type="file" id="file-picker" multiple hidden>
+          <section class="selected-files-panel" id="selected-files-panel" aria-labelledby="selected-files-title" hidden>
+            <div class="selected-files-heading">
+              <h3 id="selected-files-title">Selected files <span id="selected-files-count"></span></h3>
+              <button class="clear-selection" id="clear-selection" type="button">Clear</button>
+            </div>
+            <label class="list-sort-control">Sort by
+              <select id="selected-files-sort" aria-label="Sort selected files">
+                <option value="added">Selection order</option>
+                <option value="name-asc">Name, A–Z</option>
+                <option value="name-desc">Name, Z–A</option>
+                <option value="size-asc">Size, smallest</option>
+                <option value="size-desc">Size, largest</option>
+              </select>
+            </label>
+            <label class="selected-path-label" for="selected-paths">File names and available relative paths</label>
+            <textarea id="selected-paths" rows="3" readonly placeholder="Paths will appear here when you select or drop files."></textarea>
+            <small class="selected-path-note">Browsers don’t share full device paths. Only the selected file names are used for backup.</small>
+            <ul class="selected-file-list" id="selected-file-list" aria-live="polite"></ul>
+            <button class="button button-dark button-large upload-selected-button" id="upload-selected" type="button">Upload selected files <span aria-hidden="true">↗</span></button>
+          </section>
+          <div class="upload-progress" id="upload-progress" hidden role="status"></div>
+          <a class="backup-next-link" href="activity.html">View upload activity <span aria-hidden="true">↗</span></a>
+        </section>
+        <aside class="backup-side-panel" aria-label="Backup details">
+          <section class="backup-side-card backup-storage-card"><div class="backup-side-heading"><span class="backup-side-icon">▰</span><div><h2>Upload summary</h2><p id="backup-storage-size">0 B uploaded</p></div></div><div class="backup-storage-track"><span id="backup-storage-fill"></span></div><small id="backup-storage-count">No successful uploads yet</small></section>
+          <section class="backup-side-card"><div class="backup-side-heading"><span class="backup-side-icon">◷</span><div><h2>Recent uploads</h2><p>Your latest backup activity</p></div></div><ul class="backup-recent-list" id="backup-recent-list"><li>Loading your uploads…</li></ul><a class="backup-side-link" href="activity.html">View all activity <span aria-hidden="true">→</span></a></section>
+          <section class="backup-side-card backup-benefits"><div><span class="backup-side-icon">✓</span><span><strong>Private by design</strong><small>Files go to your own Drive folder.</small></span></div><div><span class="backup-side-icon">↑</span><span><strong>Easy to manage</strong><small>Choose the files you want to save.</small></span></div><div><span class="backup-side-icon">▤</span><span><strong>Clear history</strong><small>Review your uploads any time.</small></span></div></section>
+        </aside>
+        </div>
+      </main>
+      <footer class="footer dashboard-footer"><a class="brand" href="index.html"><span class="brand-mark"><svg viewBox="0 0 32 32" fill="none"><path d="M9.5 23.5h13.1a5.4 5.4 0 0 0 .6-10.8A7.4 7.4 0 0 0 9 11.1a6.3 6.3 0 0 0 .5 12.4Z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="m12.7 17.8 3.1 3.1 4.8-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>cloudkeep</span></a></footer>
+    </div>
+    <script src="cloudkeep-common.js" defer></script>
+    <script src="backup.js" defer></script>
+  </body>
+</html>

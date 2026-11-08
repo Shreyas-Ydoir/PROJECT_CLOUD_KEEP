@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#100b20">
+    <title>Scheduled deletion — Cloudkeep</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=cloud-purple-3">
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar dashboard-topbar app-page-topbar">
+        <a class="brand" href="index.html" aria-label="Cloudkeep home"><span class="brand-mark"><svg viewBox="0 0 32 32" fill="none"><path d="M9.5 23.5h13.1a5.4 5.4 0 0 0 .6-10.8A7.4 7.4 0 0 0 9 11.1a6.3 6.3 0 0 0 .5 12.4Z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="m12.7 17.8 3.1 3.1 4.8-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Cloud<span class="brand-accent">keep</span></span></a>
+        <nav class="app-page-nav" aria-label="Main navigation"><a href="dashboard.html">Home</a><a href="backup.html">Backup</a><a href="activity.html">Activity</a><a href="planner.html">Planner</a><a href="cleanup.html" aria-current="page">Deletion</a></nav>
+        <a class="profile-avatar" href="profile.html" data-profile-avatar aria-label="Profile"><img alt="" data-profile-picture hidden><span data-profile-initials>?</span></a>
+        <details class="dashboard-menu"><summary aria-label="Open menu"><span>Menu</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" /></svg></summary><div class="dashboard-menu-panel"><nav aria-label="Main menu"><a href="dashboard.html">Home</a><a href="backup.html">Backup</a><a href="activity.html">Activity</a><a href="planner.html">Planner</a><a href="cleanup.html" aria-current="page">Scheduled deletion</a><a href="profile.html">Profile</a></nav><button class="menu-logout" type="button" data-logout>Log out</button></div></details>
+      </header>
+      <main class="dashboard-view">
+        <div class="dashboard-top"><div><h1>Scheduled deletion</h1></div></div>
+        <div class="preview-banner deletion-warning"><span>!</span><p><strong>Files move to Drive trash.</strong> Restore them from Google Drive. Keep the app running at the scheduled time.</p></div>
+        <div class="preview-banner" id="page-message" role="status" hidden></div>
+        <section class="cleanup-layout">
+          <div class="cleanup-card deletion-form-card">
+            <div class="activity-head"><div><h2>Schedule a file</h2></div></div>
+            <form id="deletion-form" class="deletion-form">
+              <label for="deletion-file">Uploaded file</label>
+              <select id="deletion-file" required><option value="">Loading uploaded files…</option></select>
+              <label for="deletion-date">Move to Drive trash on</label>
+              <input id="deletion-date" type="datetime-local" required>
+              <small class="deletion-hint">The time is based on your device’s local timezone.</small>
+              <label class="deletion-confirm"><input id="confirm-trash" type="checkbox" required><span>I understand this will move the selected file to Google Drive trash.</span></label>
+              <button class="button button-dark button-large full-button" type="submit">Schedule deletion <span aria-hidden="true">↗</span></button>
+            </form>
+          </div>
+          <section class="deletion-intro-card">
+            <span class="deletion-intro-icon" aria-hidden="true">⌫</span>
+            <div><span class="eyebrow">HOW IT WORKS</span><p>Choose an uploaded file, set a time, and confirm. At that moment it moves to your Google Drive trash, where you can restore it if needed.</p></div>
+          </section>
+          <section class="deletion-groups" aria-label="Scheduled deletion files">
+            <section class="cleanup-card deletion-group-card">
+              <div class="deletion-group-heading"><h2>Pending</h2><span id="pending-count">0</span></div>
+              <p class="deletion-group-note">Scheduled for a future date.</p>
+              <label class="list-sort-control">Sort by<select class="deletion-sort" data-sort-list="deletions-pending" aria-label="Sort pending deletions"><option value="date-asc">Soonest first</option><option value="date-desc">Latest first</option><option value="name-asc">Name, A–Z</option><option value="name-desc">Name, Z–A</option><option value="size-asc">Size, smallest</option><option value="size-desc">Size, largest</option></select></label>
+              <div id="deletions-pending" class="deletion-list" aria-live="polite"></div>
+              <p id="pending-empty" class="deletion-group-empty">No upcoming deletions.</p>
+            </section>
+            <section class="cleanup-card deletion-group-card">
+              <div class="deletion-group-heading"><h2>Due today</h2><span id="today-count">0</span></div>
+              <p class="deletion-group-note">Overdue items remain here until processed.</p>
+              <label class="list-sort-control">Sort by<select class="deletion-sort" data-sort-list="deletions-today" aria-label="Sort due deletions"><option value="date-asc">Soonest first</option><option value="date-desc">Latest first</option><option value="name-asc">Name, A–Z</option><option value="name-desc">Name, Z–A</option><option value="size-asc">Size, smallest</option><option value="size-desc">Size, largest</option></select></label>
+              <div id="deletions-today" class="deletion-list" aria-live="polite"></div>
+              <p id="today-empty" class="deletion-group-empty">Nothing is due today.</p>
+            </section>
+            <section class="cleanup-card deletion-group-card">
+              <div class="deletion-group-heading"><h2>Moved to Drive trash</h2><span id="moved-count">0</span></div>
+              <p class="deletion-group-note">Restore these from Google Drive if needed.</p>
+              <label class="list-sort-control">Sort by<select class="deletion-sort" data-sort-list="deletions-moved" aria-label="Sort moved files"><option value="date-desc">Recently moved</option><option value="date-asc">First moved</option><option value="name-asc">Name, A–Z</option><option value="name-desc">Name, Z–A</option><option value="size-asc">Size, smallest</option><option value="size-desc">Size, largest</option></select></label>
+              <div id="deletions-moved" class="deletion-list" aria-live="polite"></div>
+              <p id="moved-empty" class="deletion-group-empty">No files have been moved.</p>
+            </section>
+          </section>
+          <section class="cleanup-card deletion-other-card" id="deletion-other-card" hidden>
+            <div class="deletion-group-heading"><h2>Other activity</h2><span id="other-count">0</span></div>
+            <label class="list-sort-control">Sort by<select class="deletion-sort" data-sort-list="deletions-other" aria-label="Sort other deletion activity"><option value="date-desc">Newest first</option><option value="date-asc">Oldest first</option><option value="name-asc">Name, A–Z</option><option value="name-desc">Name, Z–A</option><option value="size-asc">Size, smallest</option><option value="size-desc">Size, largest</option></select></label>
+            <div id="deletions-other" class="deletion-list" aria-live="polite"></div>
+          </section>
+        </section>
+      </main>
+      <footer class="footer dashboard-footer"><a class="brand" href="index.html"><span class="brand-mark"><svg viewBox="0 0 32 32" fill="none"><path d="M9.5 23.5h13.1a5.4 5.4 0 0 0 .6-10.8A7.4 7.4 0 0 0 9 11.1a6.3 6.3 0 0 0 .5 12.4Z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="m12.7 17.8 3.1 3.1 4.8-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>cloudkeep</span></a></footer>
+    </div>
+    <script src="cloudkeep-common.js" defer></script>
+    <script src="cleanup.js" defer></script>
+  </body>
+</html>
